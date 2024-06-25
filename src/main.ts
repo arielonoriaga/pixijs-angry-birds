@@ -3,10 +3,10 @@ import './index.css'
 import PixiApp from './states/PixiApp'
 import PhysicsEngine from './states/PhysicsEngine'
 
-const main = async () => {
-  const pixiApp = PixiApp.getInstance()
-  const physicsEngine = PhysicsEngine.getInstance()
+const pixiApp = PixiApp.getInstance()
+const physicsEngine = PhysicsEngine.getInstance()
 
+const main = async () => {
   await pixiApp.app.init({
     width: window.innerWidth,
     height: 600,

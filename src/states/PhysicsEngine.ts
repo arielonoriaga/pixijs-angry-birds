@@ -1,14 +1,15 @@
 import {
-  Body, Engine, Runner, World,
+  Engine, Runner, World,
 } from 'matter-js'
-import { Application, Container } from 'pixi.js'
+import { Application } from 'pixi.js'
+import Box from '../physics/Box'
 
 let singleton: PhysicsEngine | null = null
 
 export default class PhysicsEngine {
   engine: Engine
   world: World
-  bodies: { sprite: Container; body: Body }[] = []
+  bodies: Box[] = []
   isEngineRunning = false
 
   private constructor() {
@@ -41,5 +42,11 @@ export default class PhysicsEngine {
     Runner.run(this.engine)
 
     this.isEngineRunning = true
+  }
+
+  addBody(body: Box) {
+    this.bodies.push(body)
+
+    World.add(this.world, body.body)
   }
 }
